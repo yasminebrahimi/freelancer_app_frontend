@@ -17,11 +17,7 @@ function SendOTPForm() {
             type="text"
           />
         </div>
-        <button
-          className="px-4 py-2 font-bold bg-primary-900
-        text-white w-full rounded-xl transition-all duration-300
-        hover:bg-primary-800 shodaw-lg shodaw-primary-300"
-        >
+        <button className="btn btn--primary w-full">
           Send verification code
         </button>
       </form>
@@ -30,6 +26,3 @@ function SendOTPForm() {
 }
 
 export default SendOTPForm;
-
-
-
