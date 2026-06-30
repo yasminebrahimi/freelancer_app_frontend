@@ -13,11 +13,7 @@ function SendOTPForm() {
             id="phonenumber"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
-            className="w-full py-3 px-4 rounded-xl text-secondary-900
-            border border-grey-300 hover:border-primary-500
-            focus:border-primary-500
-            focus:bg-white transition-all duration-300
-            ease-in-out focus:shadow-lg focus:shadow-primary-200"
+            className="textField__input"
             type="text"
           />
         </div>
@@ -34,3 +30,6 @@ function SendOTPForm() {
 }
 
 export default SendOTPForm;
+
+
+
