@@ -21,3 +21,17 @@ export default App;
 // 1. axios (useState, useEffect)
 // 2. useFetch (data, loading, error)
 // 3. react-query => redux alrernative (remote states), fetch (get), mutate (post)
+
+
+
+// feature based driven folder structure=> 
+// features: 
+// projects
+// proposal -> (components, hooks, context, ...)
+// authentication 
+// category 
+// users 
+// tnx 
+// ... 
+// cart 
+// comment 
