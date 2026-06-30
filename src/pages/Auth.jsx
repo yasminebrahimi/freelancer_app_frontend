@@ -1,11 +1,12 @@
 import React from "react";
+import SendOTPForm from "../features/authentication/sendOIPFrom"; 
 
 function Auth() {
-  return <div>Auth</div>;
+  return (
+    <div className="w-full sm:max-w-sm">
+      <SendOTPForm />
+    </div>
+  );
 }
 
 export default Auth;
-
-
-
-// sdie-effect => 

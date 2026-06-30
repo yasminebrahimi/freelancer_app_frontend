@@ -171,3 +171,7 @@ table td {
   background-color: rgb(var(--color-secondary-500));
   color: rgb(var(--color-secondary-100));
 }
+
+label {
+  display: block;
+}
