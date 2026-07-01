@@ -6,19 +6,20 @@ function CheckOTPForm() {
   return (
     <div>
       <form className="space-y-10">
-        <p className="font-bold text-secondary-800"></p>
-        Enter the verification code
+        <p className="font-bold text-secondary-800">
+          Enter the verification code
+        </p>
         <OTPInput
-          value="otp"
+          value={otp}
           onChange={setOtp}
           numInputs={6}
           renderSeparator={<span>-</span>}
           renderInput={(props) => <input type="number" {...props} />}
-          containerStyle="felx flex-row-reverse gap-x-2 justify-center"
+          containerStyle="flex flex-row gap-x-2 justify-center"
           inputStyle={{
             width: "2.5rem",
             padding: "0.5rem 0.2rem",
-            border: "1px solid rgb(var(--color--primary-300))",
+            border: "1px solid rgb(var(--color-primary-300))",
             borderRadius: "0.5rem",
           }}
         />
