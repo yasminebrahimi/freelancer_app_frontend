@@ -1,6 +1,6 @@
 import React from "react";
 
-function TextField(label, name, value, onChange) {
+function TextField({ label, name, value, onChange }) {
   return (
     <div>
       <label className="mb-2 block" htmlFor={name}>

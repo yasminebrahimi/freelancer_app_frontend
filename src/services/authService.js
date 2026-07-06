@@ -1,3 +1,4 @@
+import axios from "axios";
 import http from "./httpService";
 
 export function getOtp(data) {
