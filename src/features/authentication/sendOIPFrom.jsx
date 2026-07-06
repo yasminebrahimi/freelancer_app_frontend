@@ -15,8 +15,7 @@ function SendOTPForm() {
     e.preventDefault();
     try {
       const data = await mutateAsync({ phoneNumber });
-      console.log(data);
-      //toast.success(data.message);
+      toast.success(data.message);
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
