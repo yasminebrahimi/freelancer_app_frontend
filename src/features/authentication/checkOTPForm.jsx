@@ -5,6 +5,7 @@ import { checkOtp } from "../../services/authService";
 
 function CheckOTPForm({ phonNumber }) {
   const [otp, setOtp] = useState("");
+  const navigate = useNavigate();
 
   const { isPending, error, data, mutateAsync } = useMutation({
     mutationFn: checkOtp,
@@ -13,8 +14,15 @@ function CheckOTPForm({ phonNumber }) {
   const checkOtpHandler = async (e) => {
     e.preventDefault();
     try {
-      const data = await mutateAsync({ phonNumber, otp });
-      console.log(data);
+      const { user, message } = await mutateAsync({ phonNumber, otp });
+      toast.success(message);
+      if (user.isActive) {
+        //push to panel based on role
+        //if (user.role === "OWNER") navigate("/owner");
+        //if (user.role === "FREELANCER") navigate("/freelancer");
+      } else {
+        navigate("/complete-profile");
+      }
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
