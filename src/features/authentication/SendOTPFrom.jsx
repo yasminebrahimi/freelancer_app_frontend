@@ -5,9 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Loading from "../../ui/Loading";
 
-function SendOTPForm() {
-  const [phoneNumber, setPhoneNumber] = useState("");
-
+function SendOTPForm({ setStep, phoneNumber, onChange }) {
   const { isPending, error, data, mutateAsync } = useMutation({
     mutationFn: getOtp,
   });
@@ -19,12 +17,9 @@ function SendOTPForm() {
       setStep(2);
       toast.success(data.message);
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      
     }
   };
-
-  // useQuer => get
-  //useMutation => post, put, delete
 
   return (
     <div>
@@ -33,7 +28,7 @@ function SendOTPForm() {
           label="Phone Number"
           name="phoneNumber"
           value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          onChange={onChange}
         />
         <div>
           {isPending ? (

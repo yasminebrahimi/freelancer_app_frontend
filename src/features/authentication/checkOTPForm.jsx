@@ -1,11 +1,28 @@
+import { useMutation } from "@tanstack/react-query";
 import React, { useState } from "react";
 import OTPInput from "react-otp-input";
+import { checkOtp } from "../../services/authService";
 
-function CheckOTPForm() {
+function CheckOTPForm({ phonNumber }) {
   const [otp, setOtp] = useState("");
+
+  const { isPending, error, data, mutateAsync } = useMutation({
+    mutationFn: checkOtp,
+  });
+
+  const checkOtpHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await mutateAsync({ phonNumber, otp });
+      console.log(data);
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
+
   return (
     <div>
-      <form className="space-y-10">
+      <form className="space-y-10" onSubmit={checkOtpHandler}>
         <p className="font-bold text-secondary-800">
           Enter the verification code
         </p>
