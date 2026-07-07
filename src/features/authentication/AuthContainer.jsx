@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SendOTPForm from "./SendOTPForm";
+import SendOTPForm from "./SendOTPFrom";
 import CheckOTPForm from "./CheckOTPForm";
 
 function AuthContainer() {
