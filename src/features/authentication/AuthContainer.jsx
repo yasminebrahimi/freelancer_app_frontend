@@ -14,11 +14,11 @@ function AuthContainer() {
     mutationFn: getOtp,
   });
 
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const sendOtpHandler = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     try {
       const data = await mutateAsync({ phoneNumber });
       setStep(2);
