@@ -6,7 +6,7 @@ import OTPInput from "react-otp-input";
 import { checkOtp } from "../../services/authService";
 import { HiArrowLeft } from "react-icons/hi";
 
-const RESEND_TIME = 90;
+const RESEND_TIME = 5;
 
 function CheckOTPForm({ phoneNumber, onBack, onResendOtp }) {
   const [otp, setOtp] = useState("");
@@ -33,8 +33,13 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOtp }) {
     }
   };
 
+  const handleResend = async () => {
+    await onResendOtp();
+    setTime(RESEND_TIME);
+  };
+
   useEffect(() => {
-    const timer = time > 0 && setInterval(() => setTime((t) => t - 1, 1000));
+    const timer = time > 0 && setInterval(() => setTime((t) => t - 1), 1000);
     return () => {
       if (timer) clearInterval(timer);
     };
@@ -49,7 +54,7 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOtp }) {
         {time > 0 ? (
           <p> {time} till sending a new code</p>
         ) : (
-          <button onClick={onResendOtp}>Send a new code</button>
+          <button onClick={handleResend}>Send a new code</button>
         )}
       </div>
 

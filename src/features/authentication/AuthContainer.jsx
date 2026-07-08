@@ -10,17 +10,19 @@ function AuthContainer() {
     mutationFn: getOtp,
   });
 
+  const [step, setStep] = useState(2);
+  const [phoneNumber, setPhoneNumber] = useState("");
+
   const sendOtpHandler = async (e) => {
     e.preventDefault();
     try {
       const data = await mutateAsync({ phoneNumber });
       setStep(2);
       toast.success(data.message);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
   };
-
-  const [step, setStep] = useState(2);
-  const [phoneNumber, setPhoneNumber] = useState("");
 
   const renderStep = () => {
     switch (step) {
