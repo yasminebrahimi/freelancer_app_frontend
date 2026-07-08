@@ -5,10 +5,11 @@ import React, { useEffect, useState } from "react";
 import OTPInput from "react-otp-input";
 import { checkOtp } from "../../services/authService";
 import { HiArrowLeft } from "react-icons/hi";
+import { CiEdit } from "react-icons/ci";
 
 const RESEND_TIME = 5;
 
-function CheckOTPForm({ phoneNumber, onBack, onResendOtp }) {
+function CheckOTPForm({ phoneNumber, onBack, onResendOtp, otpResponse }) {
   const [otp, setOtp] = useState("");
   const [time, setTime] = useState(RESEND_TIME);
   const navigate = useNavigate();
@@ -50,6 +51,14 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOtp }) {
       <button onClick={onBack}>
         <HiArrowLeft className="w-6 h-6 text-secondary-500" />
       </button>
+      {otpResponse && (
+        <p className="flex items-center gap-x-2 my-4">
+          <span> {otpResponse?.message} </span>
+          <button onClick={onBack}>
+            <CiEdit className="w-6 h-6 text-primary-900" />
+          </button>
+        </p>
+      )}
       <div className="mb-4 text-secondary-900">
         {time > 0 ? (
           <p> {time} till sending a new code</p>
@@ -57,7 +66,6 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOtp }) {
           <button onClick={handleResend}>Send a new code</button>
         )}
       </div>
-
       <form className="space-y-10" onSubmit={checkOtpHandler}>
         <p className="font-bold text-secondary-800">
           Enter the verification code

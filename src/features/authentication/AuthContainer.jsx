@@ -6,7 +6,11 @@ import CheckOTPForm from "./CheckOTPForm";
 import { getOtp } from "../../services/authService";
 
 function AuthContainer() {
-  const { isPending: isSendingOtp, mutateAsync } = useMutation({
+  const {
+    isPending: isSendingOtp,
+    mutateAsync,
+    data: otpRespoanse,
+  } = useMutation({
     mutationFn: getOtp,
   });
 
@@ -43,6 +47,7 @@ function AuthContainer() {
             onResendOtp={sendOtpHandler}
             phoneNumber={phoneNumber}
             onBack={() => setStep((s) => s - 1)}
+            otpRespoanse={otpRespoanse}
           />
         );
       default:
