@@ -1,9 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 import React, { useState } from "react";
 import OTPInput from "react-otp-input";
 import { checkOtp } from "../../services/authService";
+import { HiArrowLeft } from "react-icons/hi";
 
-function CheckOTPForm({ phonNumber }) {
+function CheckOTPForm({ phoneNumber, onBack }) {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
@@ -14,7 +17,7 @@ function CheckOTPForm({ phonNumber }) {
   const checkOtpHandler = async (e) => {
     e.preventDefault();
     try {
-      const { user, message } = await mutateAsync({ phonNumber, otp });
+      const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
       if (user.isActive) {
         //push to panel based on role
@@ -30,6 +33,9 @@ function CheckOTPForm({ phonNumber }) {
 
   return (
     <div>
+      <button onClick={onBack}>
+        <HiArrowLeft className="w-6 h-6 text-secondary-500" />
+      </button>
       <form className="space-y-10" onSubmit={checkOtpHandler}>
         <p className="font-bold text-secondary-800">
           Enter the verification code

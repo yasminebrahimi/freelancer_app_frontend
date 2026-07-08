@@ -3,7 +3,7 @@ import SendOTPForm from "./SendOTPFrom";
 import CheckOTPForm from "./CheckOTPForm";
 
 function AuthContainer() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const renderStep = () => {
@@ -18,7 +18,12 @@ function AuthContainer() {
         );
 
       case 2:
-        return <CheckOTPForm phoneNumber={phoneNumber} />;
+        return (
+          <CheckOTPForm
+            phoneNumber={phoneNumber}
+            onBack={() => setStep((s) => s - 1)}
+          />
+        );
       default:
         return null;
     }
