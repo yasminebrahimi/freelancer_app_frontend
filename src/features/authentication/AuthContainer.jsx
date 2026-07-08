@@ -9,7 +9,7 @@ function AuthContainer() {
   const {
     isPending: isSendingOtp,
     mutateAsync,
-    data: otpRespoanse,
+    data: otpResponse,
   } = useMutation({
     mutationFn: getOtp,
   });
@@ -47,7 +47,7 @@ function AuthContainer() {
             onResendOtp={sendOtpHandler}
             phoneNumber={phoneNumber}
             onBack={() => setStep((s) => s - 1)}
-            otpRespoanse={otpRespoanse}
+            otpResponse={otpResponse}
           />
         );
       default:
