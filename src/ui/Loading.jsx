@@ -1,4 +1,3 @@
-import React from "react";
 import { ThreeDots } from "react-loader-spinner";
 
 function Loading({ width = "75", height = "40" }) {
@@ -6,15 +5,14 @@ function Loading({ width = "75", height = "40" }) {
     <ThreeDots
       height={height}
       width={width}
-      radius="9"
+      radius={9}
       color="rgb(var(--color-primary-900))"
       wrapperStyle={{
         display: "flex",
         justifyContent: "center",
       }}
-      visible={visibl}
+      visible={true}
     />
   );
 }
-
 export default Loading;
