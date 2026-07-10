@@ -23,7 +23,7 @@ function CompleteProfileForm() {
           <div className="flex items-center justify-center gap-x-8">
             <div className="flex items-center gap-x-2 text-secondary-600">
               <input
-                className="cursor-pointer w-4 h-4 accent-red-500"
+                className="cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-blue-500"
                 type="radio"
                 name="role"
                 id="OWNER"
@@ -33,7 +33,7 @@ function CompleteProfileForm() {
             </div>
             <div className="flex items-center justify-center gap-x-1">
               <input
-                className="cursor-pointer w-4 h-4 accent-red-500"
+                className="cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-blue-500"
                 type="radio"
                 name="role"
                 id="FREELANCER"
