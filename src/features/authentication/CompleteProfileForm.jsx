@@ -7,10 +7,14 @@ function CompleteProfileForm() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="flex justify-center pt-10">
       <div className="w-full sm:max-w-sm">
-        <form className="space-y-8">
+        <form className="space-y-8" onSubmit={handleSubmit}>
           <TextField
             label="First and Last Name"
             name="name"
