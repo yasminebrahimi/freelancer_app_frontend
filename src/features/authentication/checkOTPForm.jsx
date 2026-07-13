@@ -23,13 +23,15 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
     try {
       const { user, message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
-      if (user.isActive) {
-        //push to panel based on role
-        //if (user.role === "OWNER") navigate("/owner");
-        //if (user.role === "FREELANCER") navigate("/freelancer");
-      } else {
-        navigate("/complete-profile");
+      if (!user.active) return navigate("/complete-profile");
+      if (user.status !== 2) {
+        navigate("/");
+        toast.error("Your profile is waiting to verify", { icon: "👏" });
+        return;
       }
+
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
