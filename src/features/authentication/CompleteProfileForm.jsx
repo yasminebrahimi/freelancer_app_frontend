@@ -29,7 +29,7 @@ function CompleteProfileForm() {
           />
           <div className="flex items-center justify-center gap-x-8">
             <RadioInput
-              label="owner"
+              label="Owner"
               value="OWNER"
               onChange={(e) => setRole(e.target.value)}
               id="OWNER"
@@ -37,7 +37,7 @@ function CompleteProfileForm() {
               checked={role === "OWNER"}
             />
             <RadioInput
-              label="freelancer"
+              label="Freelancer"
               value="FREELANCER"
               onChange={(e) => setRole(e.target.value)}
               id="FREELANCER"
