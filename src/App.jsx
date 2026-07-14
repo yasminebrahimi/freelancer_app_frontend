@@ -15,7 +15,6 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
-      <div className="container xl:max-w-screen-xl">
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
@@ -27,7 +26,6 @@ function App() {
 
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
     </QueryClientProvider>
   );
 }
