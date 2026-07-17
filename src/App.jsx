@@ -21,10 +21,11 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/complete-profile" element={<CompleteProfile />} />
 
-        <Route path="owner" element={<AppLauout />}>
-          <Route path="dashboard" element={<OwnerDashbaord />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="project" element={<Project />} />
+        <Route path="/owner" element={<AppLauout />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="/dashboard" element={<OwnerDashbaord />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<Project />} />
         </Route>
 
         <Route path="/" element={<Home />} />
