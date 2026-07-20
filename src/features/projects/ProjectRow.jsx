@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import truncateText from "../../utils/truncateText";
 import { HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 
 function ProjectRow({ project, index }) {
+  const [isEditOpen, setIsEditOpen] = useState(false);
   return (
     <Table.Row>
       <td>{index + 1}</td>
@@ -33,10 +34,16 @@ function ProjectRow({ project, index }) {
       </td>
       <td>
         <div className="flex items-center gap-x-4">
-          <button>
+          <button onClick={() => setIsEditOpen(true)}>
             <TbPencilMinus className="w-5 h-5 text-primary-900" />
           </button>
-          <Model open={true}>this is modal...</Model>
+          <Model
+            title="model title"
+            open={isEditOpen}
+            onClose={() => setIsEditOpen(fasle)}
+          >
+            this is modal...
+          </Model>
           <button>
             <HiOutlineTrash className="w-5 h-5 text-error" />
           </button>

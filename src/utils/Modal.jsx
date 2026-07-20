@@ -14,13 +14,12 @@ function Modal({ open, onClose, title, children }) {
         w-64"
         >
           <div className="flex items-center justify-between border-b border-b-secondary-300 pb-2 mb-6">
-            <p className="text-secondary-700 font-bold text-base">
-              model title
-            </p>
-            <button>
+            <p className="text-secondary-700 font-bold text-base">{title}</p>
+            <button onClick={onClose}>
               <HiOutlineX className="w-5 h-5 text-secondary-500" />
             </button>
           </div>
+          {children}
         </div>
       </div>
     )
