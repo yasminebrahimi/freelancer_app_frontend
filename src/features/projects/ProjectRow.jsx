@@ -3,9 +3,11 @@ import toLocalDateShort from "../../utils/toLocalDateShort";
 import truncateText from "../../utils/truncateText";
 import { HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
+import ConfirmDelete from "../../utils/ConfirmDelete";
 
 function ProjectRow({ project, index }) {
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(fasle);
   return (
     <Table.Row>
       <td>{index + 1}</td>
@@ -34,19 +36,30 @@ function ProjectRow({ project, index }) {
       </td>
       <td>
         <div className="flex items-center gap-x-4">
-          <button onClick={() => setIsEditOpen(true)}>
-            <TbPencilMinus className="w-5 h-5 text-primary-900" />
-          </button>
-          <Model
-            title="model title"
-            open={isEditOpen}
-            onClose={() => setIsEditOpen(fasle)}
-          >
-            this is modal...
-          </Model>
-          <button>
-            <HiOutlineTrash className="w-5 h-5 text-error" />
-          </button>
+          <>
+            <button onClick={() => setIsEditOpen(true)}>
+              <TbPencilMinus className="w-5 h-5 text-primary-900" />
+            </button>
+            <Model
+              title={`Edite ${project.title}`}
+              open={isEditOpen}
+              onClose={() => setIsEditOpen(fasle)}
+            >
+              this is modal...
+            </Model>
+          </>
+          <>
+            <button onClick={() => setIsDeleteOpen(true)}>
+              <HiOutlineTrash className="w-5 h-5 text-error" />
+            </button>
+            <Model
+              title={`Delete ${project.title}`}
+              open={isDeleteOpen}
+              onClose={() => setIsDeleteOpen(fasle)}
+            >
+              <ConfirmDelete/>
+            </Model>
+          </>
         </div>
       </td>
     </Table.Row>
