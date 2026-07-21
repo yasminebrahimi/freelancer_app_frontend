@@ -57,7 +57,12 @@ function ProjectRow({ project, index }) {
               open={isDeleteOpen}
               onClose={() => setIsDeleteOpen(fasle)}
             >
-              <ConfirmDelete/>
+              <ConfirmDelete
+                resourceName={project.title}
+                onClose={() => setIsDeleteOpen(false)}
+                onConfirm={() => {}}
+                disabled={false}
+              />
             </Model>
           </>
         </div>
