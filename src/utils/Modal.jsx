@@ -6,10 +6,13 @@ function Modal({ open, onClose, title, children }) {
 
   useEffect(() => {
     function handleClick(e) {
-      if(ref.current && )
+      if (ref.current && ref.current.contains(e.target)) {
+        onclose();
+      }
     }
     document.addEventListener("click", handleClick);
-  }, []);
+    return () => document.removeEventListener("click, handleClick");
+  }, [onClose]);
 
   return (
     open && (
