@@ -1,18 +1,9 @@
 import React from "react";
 import { HiOutlineX } from "react-icons/hi";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 function Modal({ open, onClose, title, children }) {
-  const ref = useRef();
-
-  useEffect(() => {
-    function handleClick(e) {
-      if (ref.current && ref.current.contains(e.target)) {
-        onclose();
-      }
-    }
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, [onClose]);
+  const ref = useOutsideClick(onClose);
 
   return (
     open && (
