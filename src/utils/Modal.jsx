@@ -11,7 +11,7 @@ function Modal({ open, onClose, title, children }) {
       }
     }
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click, handleClick");
+    return () => document.removeEventListener("click", handleClick);
   }, [onClose]);
 
   return (
