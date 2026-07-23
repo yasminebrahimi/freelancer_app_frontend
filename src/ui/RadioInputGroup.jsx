@@ -6,16 +6,16 @@ function RadioInputGroup({ register, watch, errors, configs }) {
   return (
     <div>
       <div className="flex flex-wrap items-center justify-center gap-x-8">
-        {options.map((option) => (
+        {options.map(({ lable, value }) => (
           <RadioInput
-            key={options.value}
-            label={options.label}
-            value={options.value}
-            id={options.id}
-            name={option.name}
-            register={option.register}
-            watch={option.watch}
-            validationSchema={option.validationSchema}
+            key={value}
+            label={label}
+            value={value}
+            id={value}
+            name={name}
+            register={register}
+            watch={watch}
+            validationSchema={validationSchema}
             errors={errors}
           />
         ))}
