@@ -62,45 +62,39 @@ function CompleteProfileForm() {
             }}
             errors={errors}
           />
-          <div className="flex items-center justify-center gap-x-8">
-            <RadioInput
-              label="Owner"
-              value="OWNER"
-              register={register}
-              id="OWNER"
-              name="role"
-              watch={watch}
-              validationSchema={{
-                required: "Role is necessary",
-              }}
-              errors={errors}
-            />
-            <RadioInput
-              label="Freelancer"
-              value="FREELANCER"
-              register={register}
-              id="FREELANCER"
-              name="role"
-              checked={watch("role") === "FREELANCER"}
-              validationSchema={{
-                required: "Role is necessary",
-              }}
-              watch={watch}
-              errors={errors}
-            />
-
-            {/* <div className="flex items-center justify-center gap-x-1">
-              <input
-                className="cursor-pointer w-4 h-4 form-radio text-primary-900 focus:ring-blue-500"
-                type="radio"
+          <div>
+            <div className="flex flex-wrap items-center justify-center gap-x-8">
+              <RadioInput
+                label="Owner"
+                value="OWNER"
+                register={register}
+                id="OWNER"
                 name="role"
-                id="FREELANCER"
-                value="FREELANCER"
+                watch={watch}
+                validationSchema={{
+                  required: "Role is necessary",
+                }}
+                errors={errors}
               />
-              <label htmlFor="FREELANCER">Freelancer</label>
-            </div> */}
-
-            <div></div>
+              <RadioInput
+                label="Freelancer"
+                value="FREELANCER"
+                register={register}
+                id="FREELANCER"
+                name="role"
+                checked={watch("role") === "FREELANCER"}
+                validationSchema={{
+                  required: "Role is necessary",
+                }}
+                watch={watch}
+                errors={errors}
+              />
+            </div>
+            {errors && errors["role"] && (
+              <span className="text-error block text-sm mt-2 flex-1">
+                {errors["role"]?.message}
+              </span>
+            )}
           </div>
           <div>
             {isPending ? (

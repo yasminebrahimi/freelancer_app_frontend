@@ -22,11 +22,7 @@ function RadioInput({
         checked={watch(name) === value}
       />
       <label htmlFor={id}>{label}</label>
-      {errors && errors[name] && (
-        <span className="text-error block text-sm mt-2">
-          {errors[name]?.message}
-        </span>
-      )}
+    
     </div>
   );
 }
