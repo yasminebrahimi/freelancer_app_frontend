@@ -60,6 +60,10 @@ function CompleteProfileForm() {
             register={register}
             validationSchema={{
               required: "Email is necessary",
+              pattern: {
+                value: /^[A-zo-9._%+-]+@[A-20-9•-]+\. [A-Z]{2, 1$/i,
+                message: "invalid email",
+              },
             }}
             errors={errors}
           />
