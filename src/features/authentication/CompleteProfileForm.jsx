@@ -43,8 +43,20 @@ function CompleteProfileForm() {
             label="First and Last Name"
             name="name"
             register={register}
+            validationSchema={{
+              required: "Names are necessary",
+            }}
+            errors={errors}
           />
-          <TextField label="Email" name="email" register={register} />
+          <TextField
+            label="Email"
+            name="email"
+            register={register}
+            validationSchema={{
+              required: "Email is necessary",
+            }}
+            errors={errors}
+          />
           <div className="flex items-center justify-center gap-x-8">
             <RadioInput
               label="Owner"
@@ -53,6 +65,10 @@ function CompleteProfileForm() {
               id="OWNER"
               name="role"
               checked={getValues("role") === "OWNER"}
+              validationSchema={{
+                required: "Role is necessary",
+              }}
+              errors={errors}
             />
             <RadioInput
               label="Freelancer"
@@ -61,6 +77,10 @@ function CompleteProfileForm() {
               id="FREELANCER"
               name="role"
               checked={getValues("role") === "FREELANCER"}
+              validationSchema={{
+                required: "Role is necessary",
+              }}
+              errors={errors}
             />
 
             {/* <div className="flex items-center justify-center gap-x-1">

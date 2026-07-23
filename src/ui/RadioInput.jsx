@@ -1,6 +1,15 @@
 import React from "react";
 
-function RadioInput({ label, value, register, name, id, checked }) {
+function RadioInput({
+  label,
+  value,
+  register,
+  name,
+  id,
+  checked,
+  validationSchema,
+  errors,
+}) {
   return (
     <div className="flex items-center gap-x-2 text-secondary-600">
       <input
@@ -9,10 +18,15 @@ function RadioInput({ label, value, register, name, id, checked }) {
         name={name}
         id={id}
         value={value}
-        {...register(name)}
+        {...register(name, validationSchema)}
         checked={checked}
       />
       <label htmlFor={id}>{label}</label>
+      {errors && errors[name] && (
+        <span className="text-error block text-sm mt-2">
+          {errors[name]?.message}
+        </span>
+      )}
     </div>
   );
 }
