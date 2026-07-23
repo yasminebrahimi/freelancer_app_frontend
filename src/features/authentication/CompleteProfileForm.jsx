@@ -9,7 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 function CompleteProfileForm() {
-  const { handleSubmit, register, getValues } = useForm();
+  const {
+    handleSubmit,
+    register,
+    watch,
+    formState: { errors },
+  } = useForm();
   // const [name, setName] = useState("");
   // const [email, setEmail] = useState("");
   // const [role, setRole] = useState("");
@@ -64,7 +69,7 @@ function CompleteProfileForm() {
               register={register}
               id="OWNER"
               name="role"
-              checked={getValues("role") === "OWNER"}
+              watch={watch}
               validationSchema={{
                 required: "Role is necessary",
               }}
@@ -76,10 +81,11 @@ function CompleteProfileForm() {
               register={register}
               id="FREELANCER"
               name="role"
-              checked={getValues("role") === "FREELANCER"}
+              checked={watch("role") === "FREELANCER"}
               validationSchema={{
                 required: "Role is necessary",
               }}
+              watch={watch}
               errors={errors}
             />
 
