@@ -1,25 +1,32 @@
 import React from "react";
 
-function TextField({ label, name, register, type = "text", required }) {
+function TextField({
+  label,
+  name,
+  register,
+  validationSchema,
+  type = "text",
+  required,
+  errors,
+}) {
   console.log(register(name));
   return (
-    <div>
-      <label className="mb-2 block" htmlFor={name}>
+    <div className="">
+      <label className="mb-2 block text-secondary-700" htmlFor={name}>
         {label} {required && <span className="text-error">*</span>}
       </label>
       <input
-        {...register(name, {
-          required: "title is required!",
-          minLength: {
-            value: 20,
-            message: "title length 20...",
-          },
-        })}
+        {...register(name, validationSchema)}
         id={name}
         className="textField__input"
         type={type}
         autoComplete="off"
       />
+      {errors && errors[name] && (
+        <span className="text-error block text-sm mt-2">
+          {errors[name]?.message}
+        </span>
+      )}
     </div>
   );
 }
