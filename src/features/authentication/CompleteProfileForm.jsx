@@ -6,20 +6,21 @@ import { completeProfile } from "../../services/authService";
 import toast from "react-hot-toast";
 import Loading from "../../ui/Loading";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 function CompleteProfileForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  const { handleSubmit, register, getValues } = useForm();
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [role, setRole] = useState("");
   const navigate = useNavigate();
   const { mutateAsync, isPending } = useMutation({
     mutationFn: completeProfile,
   });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     try {
-      const { user, message } = await mutateAsync({ name, email, role });
+      const { user, message } = await mutateAsync(data);
       toast.success(message);
       if (user.status !== 2) {
         navigate("/");
@@ -37,35 +38,29 @@ function CompleteProfileForm() {
   return (
     <div className="flex justify-center pt-10">
       <div className="w-full sm:max-w-sm">
-        <form className="space-y-8" onSubmit={handleSubmit}>
+        <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
           <TextField
             label="First and Last Name"
             name="name"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            register={register}
           />
-          <TextField
-            label="Email"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
+          <TextField label="Email" name="email" register={register} />
           <div className="flex items-center justify-center gap-x-8">
             <RadioInput
               label="Owner"
               value="OWNER"
-              onChange={(e) => setRole(e.target.value)}
+              register={register}
               id="OWNER"
               name="role"
-              checked={role === "OWNER"}
+              checked={getValues("role") === "OWNER"}
             />
             <RadioInput
               label="Freelancer"
               value="FREELANCER"
-              onChange={(e) => setRole(e.target.value)}
+              register={register}
               id="FREELANCER"
               name="role"
-              checked={role === "FREELANCER"}
+              checked={getValues("role") === "FREELANCER"}
             />
 
             {/* <div className="flex items-center justify-center gap-x-1">
