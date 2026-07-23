@@ -1,19 +1,24 @@
 import React from "react";
 
-function TextField({ label, name, value, onChange }) {
+function TextField({ label, name, register, type = "text", required }) {
+  console.log(register(name));
   return (
     <div>
       <label className="mb-2 block" htmlFor={name}>
-        {label}
+        {label} {required && <span className="text-error">*</span>}
       </label>
       <input
-        value={value}
-        onChange={onChange}
+        {...register(name, {
+          required: "title is required!",
+          minLength: {
+            value: 20,
+            message: "title length 20...",
+          },
+        })}
         id={name}
-        name={name}
         className="textField__input"
-        type="text"
-        autoComplete="false"
+        type={type}
+        autoComplete="off"
       />
     </div>
   );
