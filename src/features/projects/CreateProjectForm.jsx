@@ -3,6 +3,7 @@ import TextField from "../../ui/TextField";
 import { useForm } from "react-hook-form";
 import RHFSelect from "../../ui/RHFSelect";
 import { TagsInput } from "react-tag-input-component";
+import DatePickerField from "../../ui/DatePickerField";
 
 function CreateProjectForm() {
   const [title, setTitle] = useState("");
@@ -14,6 +15,7 @@ function CreateProjectForm() {
   } = useForm();
 
   const [tags, setTags] = useState([]);
+  const [date, setDate] = useState(new Date());
 
   const onSubmit = (data) => {
     console.log(data);
@@ -45,6 +47,7 @@ function CreateProjectForm() {
         <label className="mb-2 block text-secondary-700">Tag</label>
         <TagsInput value={tags} onChange={setTags} name="tags" />
       </div>
+      <DatePickerField date={date} setDate={setDate} label={deadline} />
       <button type="submit" className="btn btn--primary w-full">
         Verify
       </button>
