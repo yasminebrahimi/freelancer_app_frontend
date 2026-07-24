@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextField from "../../ui/TextField";
 import { useForm } from "react-hook-form";
+import RHFSelect from "../../ui/RHFSelect";
 
 function CreateProjectForm() {
   const [title, setTitle] = useState("");
@@ -29,6 +30,12 @@ function CreateProjectForm() {
           },
         }}
         errors={errors}
+      />
+      <RHFSelect
+        label="category"
+        name="category"
+        register={register}
+        options={[]}
       />
       <button type="submit" className="btn btn--primary w-full">
         Verify
